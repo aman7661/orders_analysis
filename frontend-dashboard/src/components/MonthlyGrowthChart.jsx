@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 export default function MonthlyGrowthChart() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/api/monthly-growth")
+    axios.get(`${API_URL}/monthly-growth`)
+    
       .then(res => setData(res.data))
       .catch(err => console.error(err));
   }, []);

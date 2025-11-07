@@ -1,11 +1,12 @@
 // src/components/SubcatGrowthCard.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 export default function SubcatGrowthCard() {
   const [data, setData] = useState(null);
   useEffect(() => {
-    axios.get("http://localhost:5000/api/subcat-growth")
+    
+    axios.get(`${API_URL}/subcat-growth`)
       .then(res => setData(res.data[0]))
       .catch(err => console.error(err));
   }, []);

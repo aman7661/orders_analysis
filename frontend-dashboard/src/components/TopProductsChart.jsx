@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 export default function TopProductsChart() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/api/top-products")
+    axios.get(`${API_URL}/top-products`)
       .then(res => setData(res.data))
       .catch(err => console.error(err));
   }, []);

@@ -1,11 +1,12 @@
 // src/components/CategoryPeakMonthTable.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 export default function CategoryPeakMonthTable() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/api/category-peak-month")
+     axios.get(`${API_URL}/category-peak-month`)
+    
       .then(res => setData(res.data))
       .catch(err => console.error(err));
   }, []);

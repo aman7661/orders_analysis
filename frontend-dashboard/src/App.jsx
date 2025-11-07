@@ -3,7 +3,8 @@ import TopProductsChart from "./components/TopProductsChart";
 import RegionalSalesChart from "./components/RegionalSalesChart";
 import MonthlyGrowthChart from "./components/MonthlyGrowthChart";
 import SubcatGrowthCard from "./components/SubcatGrowthCard";
-
+import CategoryPeakMonthTable from "./components/CategoryPeakMonthTable";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 // High-contrast stat card with bold colors
 function StatCard({ title, value, subtitle, growth, bgColor = "bg-blue-500", textColor = "text-white" }) {
   return (
@@ -28,7 +29,7 @@ function StatCard({ title, value, subtitle, growth, bgColor = "bg-blue-500", tex
 function CategoryPeakMonthCards() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    fetch("http://localhost:5000/api/category-peak-month")
+    fetch(`${API_URL}/category-peak-month`)
       .then(r => r.json())
       .then(setData)
       .catch(err => console.error(err));

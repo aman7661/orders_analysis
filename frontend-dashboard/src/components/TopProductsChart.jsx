@@ -16,7 +16,7 @@ export default function TopProductsChart() {
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
           <CartesianGrid stroke="#f2f2f2" />
-          <XAxis />
+          <XAxis dataKey="product_id" tick={false}/>
           <YAxis />
           <Tooltip />
           <Bar dataKey="sales" fill="#2563eb" />
